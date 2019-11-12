@@ -12,11 +12,12 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
-app.post('/', function(request, response) {
+app.get('/', function(request, response) {
   requestLogger(request);
-  response.json({"message": 'Hello user!'})
-  }
-);
+  response.json({
+    "message": 'Hello user!'
+  })
+});
 
 app.post('/bills/fetch', function(request, response) {
   requestLogger(request);
