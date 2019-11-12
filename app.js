@@ -19,6 +19,11 @@ app.get('/', function(request, response) {
   })
 });
 
+app.post('/', function(request, response) {
+  requestLogger(request);
+  response.json(request.body);
+});
+
 app.post('/bills/fetch', function(request, response) {
   requestLogger(request);
   response.json({
@@ -72,10 +77,12 @@ app.post('/bills/fetchReceipt', function(request, response) {
 
 function requestLogger(request) {
   let rid = getRandomString(10);
-  let body = request.body;
-  let headers = request.headers;
-  console.log(rid, "body", body);
-  console.log(rid, "headers", headers);
+  let data = {
+    requestID: rid,
+    body: request.body,
+    headers: request.headers
+  }
+  console.log("new request", JSON.stringify(data, null, 2));
 }
 
 
