@@ -4,8 +4,7 @@ var bodyParser = require('body-parser');
 var jwt = require('json-web-token');
 
 const app = express();
-const port = 3009;
-
+var port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -96,4 +95,9 @@ function makeJwtSecret(numParts){
   }
   return parts.join("-");
 }
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+
+
+var server = app.listen(port, function () {
+    console.log('Server running at http://127.0.0.1:' + port + '/');
+});
