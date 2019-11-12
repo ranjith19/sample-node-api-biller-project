@@ -75,7 +75,7 @@ function requestLogger(request) {
   let body = request.body;
   let headers = request.headers;
   console.log(rid, "body", body);
-  console.log(rid, "header", header);
+  console.log(rid, "headers", headers);
 }
 
 
